@@ -9,6 +9,8 @@ def index(request):
 # Create your views here.
 
 
+
+
 def result(request):
     prediction, peaks= PreProcessor.classify(request.POST['data2'])
     # m = request.POST['data']
