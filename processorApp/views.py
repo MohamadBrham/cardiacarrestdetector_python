@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from . import PreProcessor
 
 
@@ -12,6 +12,8 @@ def index(request):
 
 
 def result(request):
-    prediction, peaks= PreProcessor.classify(request.POST['data2'])
+    data = request.POST['data']
+    prediction, peaks= PreProcessor.classify(data)
+    print(str(data))
     # m = request.POST['data']
-    return HttpResponse(prediction)
+    return JsonResponse({'Prediction': prediction})
